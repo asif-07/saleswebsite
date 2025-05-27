@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edapt Sales Bot - Dominate Your Market</title>
+    <meta name="description" content="Access our elite AI-powered sales bot trained on winning strategies, objection handling, and closing techniques that convert prospects into customers.">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #4ecdc4 100%);
+            --success-gradient: linear-gradient(135deg, #4ecdc4, #44a08d);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 24px 80px rgba(0, 0, 0, 0.25);
+            --border-radius: 24px;
+            --border-radius-small: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Animated Mesh Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(255, 107, 107, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 15%, rgba(255, 217, 61, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, rgba(78, 205, 196, 0.1) 0%, transparent 70%),
+                radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.08) 0%, transparent 50%);
+            animation: meshFloat 25s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes meshFloat {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            25% { transform: scale(1.05) rotate(0.5deg); opacity: 0.8; }
+            50% { transform: scale(0.95) rotate(-0.5deg); opacity: 1; }
+            75% { transform: scale(1.02) rotate(0.3deg); opacity: 0.9; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            padding: clamp(12px, 3vw, 20px) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 2vw, 16px);
+        }
+
+        .logo-placeholder {
+            width: clamp(40px, 8vw, 56px);
+            height: clamp(40px, 8vw, 56px);
+            background: var(--accent-gradient);
+            border-radius: var(--border-radius-small);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: clamp(16px, 3vw, 20px);
+            box-shadow: var(--shadow-soft);
+            animation: logoFloat 4s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+            animation: logoShine 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-2px) scale(1.02); }
+        }
+
+        @keyframes logoShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .company-name {
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: 800;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: clamp(1px, 0.3vw, 3px);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Bot Access Section */
+        .bot-access-section {
+            padding: clamp(40px, 8vw, 80px) 0 clamp(30px, 6vw, 60px);
+            text-align: center;
+        }
+
+        .bot-hero {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(180%);
+            border-radius: var(--border-radius);
+            padding: clamp(30px, 6vw, 50px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: clamp(30px, 6vw, 50px);
+        }
+
+        .bot-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            animation: progressBar 3s ease-in-out infinite;
+        }
+
+        @keyframes progressBar {
+            0%, 100% { transform: scaleX(0); transform-origin: left; }
+            50% { transform: scaleX(1); transform-origin: left; }
+        }
+
+        .bot-title {
+            font-size: clamp(24px, 6vw, 42px);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bot-subtitle {
+            font-size: clamp(14px, 3vw, 18px);
+            color: var(--text-secondary);
+            margin-bottom: clamp(25px, 5vw, 40px);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Stunning Bot Button */
+        .bot-button-container {
+            position: relative;
+            display: inline-block;
+            margin: clamp(20px, 4vw, 30px) 0;
+        }
+
+        .bot-button {
+            background: var(--accent-gradient);
+            background-size: 200% 200%;
+            color: white;
+            border: none;
+            padding: clamp(16px, 4vw, 24px) clamp(32px, 8vw, 48px);
+            border-radius: 50px;
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        .bot-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .bot-button:hover::before {
+            left: 100%;
+        }
+
+        .bot-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background-position: 100% 100%;
+        }
+
+        .bot-button:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            50% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 10px rgba(255, 107, 107, 0); }
+        }
+
+        .bot-icon {
+            font-size: clamp(18px, 4vw, 24px);
+            animation: robotWave 2s ease-in-out infinite;
+        }
+
+        @keyframes robotWave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* Status Indicator */
+        .bot-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            color: #4caf50;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: clamp(30px, 6vw, 60px) 0;
+            color: var(--text-primary);
+        }
+
+        .motivation-quote {
+            background: var(--accent-gradient);
+            background-size: 300% 300%;
+            animation: gradientFlow 4s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(18px, 4vw, 28px);
+            font-weight: 700;
+            margin-bottom: clamp(20px, 4vw, 30px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-title {
+            font-size: clamp(32px, 8vw, 64px);
+            font-weight: 900;
+            margin-bottom: clamp(15px, 3vw, 25px);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: clamp(16px, 4vw, 24px);
+            margin-bottom: clamp(30px, 6vw, 50px);
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Success Metrics */
+        .success-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(15px, 3vw, 25px);
+            margin: clamp(40px, 8vw, 80px) 0;
+        }
+
+        .metric-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border-radius: var(--border-radius-small);
+            padding: clamp(20px, 4vw, 30px);
+            text-align: center;
+            color: var(--text-primary);
+            font-weight: 700;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .metric-number {
+            font-size: clamp(24px, 6vw, 42px);
+            display: block;
+            margin-bottom: 8px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .metric-label {
+            font-size: clamp(11px, 2.5vw, 14px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(20px, 4vw, 40px);
+            margin: clamp(50px, 10vw, 100px) 0;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border-radius: var(--border-radius);
+            padding: clamp(25px, 5vw, 40px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-strong);
+            border-color: rgba(255, 217, 61, 0.4);
+        }
+
+        .feature-icon {
+            font-size: clamp(36px, 8vw, 56px);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .feature-title {
+            font-size: clamp(18px, 4vw, 26px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: clamp(12px, 2vw, 20px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+
+        .feature-content {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-content h4 {
+            color: #ffd93d;
+            margin-bottom: 15px;
+            font-size: clamp(14px, 3vw, 18px);
+        }
+
+        .feature-content ul {
+            text-align: left;
+            color: var(--text-secondary);
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-content li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: clamp(13px, 2.5vw, 15px);
+        }
+
+        .feature-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ffd93d;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: clamp(50px, 10vw, 100px) 0;
+            color: var(--text-primary);
+        }
+
+        .cta-title {
+            font-size: clamp(24px, 6vw, 42px);
+            font-weight: 800;
+            margin-bottom: clamp(20px, 4vw, 35px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .success-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .bot-hero {
+                padding: 25px 20px;
+            }
+            
+            .feature-card {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .success-metrics {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .metric-card {
+                padding: 15px;
+            }
+        }
+
+        /* Accessibility & Performance */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Success Animation */
+        .button-success {
+            background: var(--success-gradient) !important;
+            transform: scale(0.95) !important;
+        }
+
+        .button-success::after {
+            content: '✓ Opening...';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            opacity: 0;
+            animation: successFade 2s ease-out forwards;
+        }
+
+        @keyframes successFade {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-placeholder">E</div>
+                    <div class="company-name">Edapt</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="bot-access-section">
+            <div class="bot-hero">
+                <h1 class="bot-title">AI Sales Domination Center</h1>
+                <p class="bot-subtitle">
+                    Access our elite AI-powered sales bot trained on winning strategies, 
+                    objection handling, and closing techniques that convert prospects into customers.
+                </p>
+                
+                <div class="bot-button-container">
+                    <a href="https://iit-sales-bot.zapier.app" class="bot-button" id="botAccessButton" target="_blank" rel="noopener noreferrer">
+                        <span class="bot-icon">🤖</span>
+                        Access Sales Bot
+                    </a>
+                </div>
+
+                <div class="bot-status">
+                    <div class="status-dot"></div>
+                    <span>Bot Online • Ready to Dominate</span>
+                </div>
+                
+                <p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 15px;">
+                    ⚡ Instant responses • 🎯 Precision strategies • 💰 Proven results
+                </p>
+            </div>
+        </section>
+
+        <section class="hero-section">
+            <div class="motivation-quote">
+                "Don't wait for perfect timing — the real risk is falling behind. This isn't a trend, it's a revolution."
+            </div>
+            <h2 class="main-title">MASTER AI SALES EXECUTION</h2>
+            <p class="subtitle">Transform prospects into customers with battle-tested AI strategies</p>
+        </section>
+
+        <section class="success-metrics">
+            <div class="metric-card">
+                <span class="metric-number">300%</span>
+                <span class="metric-label">Revenue Growth</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">10x</span>
+                <span class="metric-label">Faster Learning</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">95%</span>
+                <span class="metric-label">Success Rate</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">24/7</span>
+                <span class="metric-label">Always Ready</span>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card" id="instant-insights">
+                <span class="feature-icon">🚀</span>
+                <h3 class="feature-title">Instant Sales Insights</h3>
+                <p class="feature-description">Get real-time answers to your toughest sales questions. No more waiting, no more guessing. Just pure, actionable intelligence.</p>
+                <div class="feature-content">
+                    <h4>Key Sales Insights:</h4>
+                    <ul>
+                        <li><strong>Handle Objections Smartly:</strong> "I don't have time" → Show how system fits busy professionals</li>
+                        <li><strong>Build Urgency:</strong> "By the time you come back, the world will have moved forward with AI"</li>
+                        <li><strong>Create FOMO:</strong> "Others will be building AI projects while you're still thinking"</li>
+                        <li><strong>Use Social Proof:</strong> IIT Madras certification carries strong credibility</li>
+                        <li><strong>Focus on Outcomes:</strong> Real AI skills, portfolio projects, career edge</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feature-card" id="elite-strategies">
+                <span class="feature-icon">💎</span>
+                <h3 class="feature-title">Elite Strategies</h3>
+                <p class="feature-description">Access premium sales techniques used by top 1% performers. Transform your approach and crush your competition.</p>
+                <div class="feature-content">
+                    <h4>Elite Sales Strategies:</h4>
+                    <ul>
+                        <li><strong>Differentiation Strategy:</strong> "This isn't just a course — it's an execution system"</li>
+                        <li><strong>Value Stacking:</strong> Certification + Projects + Mentorship + Community</li>
+                        <li><strong>Scarcity Tactics:</strong> Limited batches, next start date pressure</li>
+                        <li><strong>Pain Point Targeting:</strong> "Don't miss your chance to lead"</li>
+                        <li><strong>Call to Action:</strong> Simple "ACTIVATE" response for commitment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feature-card" id="precision-targeting">
+                <span class="feature-icon">🎯</span>
+                <h3 class="feature-title">Precision Targeting</h3>
+                <p class="feature-description">Learn exactly how to identify, approach, and close your ideal prospects. Every interaction becomes a winning opportunity.</p>
+                <div class="feature-content">
+                    <h4>Precision Targeting Tactics:</h4>
+                    <ul>
+                        <li><strong>Target Profile:</strong> Busy professionals wanting AI skills</li>
+                        <li><strong>Pain Points:</strong> Fear of falling behind, lack of time, need for credibility</li>
+                        <li><strong>Solution Positioning:</strong> Action-driven system, not just theory</li>
+                        <li><strong>Qualification Questions:</strong> Interest in certification, project building, career growth</li>
+                        <li><strong>Closing Signals:</strong> Asking about schedule, fees, joining process</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title">Stop Making Excuses. Start Making Sales.</h2>
+            <div class="bot-button-container">
+                <a href="https://iit-sales-bot.zapier.app" class="bot-button" id="ctaBotButton" target="_blank" rel="noopener noreferrer">
+                    <span class="bot-icon">⚡</span>
+                    Dominate Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Enhanced interactions for award-winning UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Feature card interactions with improved UX
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const content = this.querySelector('.feature-content');
+                    const isVisible = content.style.display === 'block';
+                    
+                    // Hide all other feature contents with smooth transition
+                    document.querySelectorAll('.feature-content').forEach(fc => {
+                        fc.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll('.feature-card').forEach(fc => {
+                        fc.style.transform = '';
+                        fc.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                    });
+                    
+                    // Toggle current content with animation
+                    if (!isVisible) {
+                        content.style.display = 'block';
+                        this.style.transform = 'translateY(-12px) scale(1.02)';
+                        this.style.borderColor = 'rgba(255, 217, 61, 0.6)';
+                        
+                        // Smooth scroll to show full content on mobile
+                        if (window.innerWidth <= 768) {
+                            setTimeout(() => {
+                                this.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'center' 
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            });
+
+            // Enhanced bot button interactions
+            document.querySelectorAll('#botAccessButton, #ctaBotButton').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Add success animation
+                    this.classList.add('button-success');
+                    
+                    // Track the click for analytics (if needed)
+                    console.log('Sales bot accessed:', new Date().toISOString());
+                    
+                    // Remove success class after animation
+                    setTimeout(() => {
+                        this.classList.remove('
